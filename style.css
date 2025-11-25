@@ -3,26 +3,62 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
-    background-color: #f0f0f0; 
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
     text-align: center;
 }
 
 .container {
     padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-
 #main-title {
-    font-size: 8vw; 
-    color: #000; 
+    font-size: 8vw;
+    color: #000;
     margin-bottom: 40px;
     letter-spacing: 5px;
     line-height: 1.2;
 }
 
+.name-with-img {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-mini-img {
+    height: 0.8em;
+    width: auto;
+    margin-left: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.letter-anchor {
+    position: relative;
+    display: inline-block;
+}
+
+.anime-deco {
+    position: absolute;
+    bottom: 85%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: auto;
+    z-index: 1;
+    opacity: 1;
+    mix-blend-mode: screen;
+}
 
 .timer {
     font-size: 3em;
@@ -30,7 +66,6 @@ body {
     color: #333;
     margin-bottom: 20px;
 }
-
 
 #congrats-button {
     padding: 15px 30px;
@@ -41,24 +76,36 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin: 20px auto;
+    display: block;
+    animation: pulse 2s infinite;
 }
 
 #congrats-button:hover {
     background-color: black;
 }
 
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(76, 175, 80, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
 
 .greeting-box {
     margin-top: 30px;
+    margin-bottom: 30px;
     padding: 30px;
-    background-color: #000; 
-    color: white; 
+    background-color: #000;
+    color: white;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    font-size: 1.2em;
-    font-weight: bold;
-    line-height: 1.5;
-    animation: fadeIn 1s ease-out; 
+    width: 90%;
+    max-width: 800px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @keyframes fadeIn {
@@ -66,6 +113,25 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.photo-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.photo-gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.photo-gallery img:hover {
+    transform: scale(1.05);
+}
 
 .confetti {
     position: fixed;
@@ -78,57 +144,49 @@ body {
     z-index: 1000;
 }
 
-
-.name-with-img {
-    display: inline-flex;
-    align-items: center; 
-    justify-content: center;
-}
-
-
-.title-mini-img {
-  
-    height: 0.8em;
-    width: auto;  
-
-    margin-left: 15px;
-
-  
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-}
-
 @keyframes fall {
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }
     100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
 
-.anime-deco {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    width: 150px; 
-    height: auto;
-    
-    z-index: 1;
-    opacity: 0.9;
-    
-   
-    animation: float 3s ease-in-out infinite;
-    
-     mix-blend-mode: multiply; 
-}
+@media (max-width: 768px) {
+    #main-title {
+        font-size: 12vw;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
+    .title-mini-img {
+        margin-left: 5px;
+    }
 
+    .timer {
+        font-size: 2em;
+    }
 
-@media (max-width: 600px) {
+    .greeting-box {
+        padding: 20px;
+        font-size: 1rem;
+        width: 95%;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-gallery img {
+        height: auto;
+        max-height: 300px;
+    }
+
+    #congrats-button {
+        font-size: 1.2em;
+        padding: 12px 25px;
+        width: 80%;
+    }
+
     .anime-deco {
-        width: 100px;
-        bottom: 10px;
-        left: 5px;
+        width: 35px;
+        bottom: 90%;
     }
 }
