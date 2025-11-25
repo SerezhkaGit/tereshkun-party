@@ -1,5 +1,5 @@
 
-const birthdayDate = new Date("2025-11-25T22:07:20").getTime(); 
+const birthdayDate = new Date("2025-11-25T22:15:00").getTime(); 
 
 const countdownEl = document.getElementById('countdown-timer');
 const congratsButton = document.getElementById('congrats-button');
@@ -90,3 +90,4 @@ congratsButton.addEventListener('click', () => {
     setInterval(createConfettiPiece, 100);
 
 });
+
